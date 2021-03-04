@@ -1,0 +1,24 @@
+{
+  "name": "codeinstall-react-native",
+  "version": "1.0.1",
+  "description": "codeinstall sdk plugin for react-native",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node postInstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "keywords": [
+    "codeinstall",
+    "免填邀请码",
+    "一键拉起"
+  ],
+  "author": "codeinstall",
+  "license": "ISC"
+}
