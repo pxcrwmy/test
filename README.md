@@ -31,7 +31,7 @@ react-native link
 ```
 
 ## 二、自动集成方式
-### 如自动集成方式失败，无需惊慌，请参考手动集成方式 [手动集成文档](https://github.com/OpenInstall/codeinstall-react-native/tree/master/documents)
+### 如自动集成方式失败，无需惊慌，请参考手动集成方式 [手动集成文档](https://github.com/codeinstallcn/codeinstall-react-native/tree/master/documents)
 
 （1）使用自动集成脚本集成代码和部分配置
 ```
@@ -57,7 +57,7 @@ npm run codeinstall e7iomw rc8tey
 
 - 在 iOS 工程中如果找不到头文件可能要在 TARGETS-> BUILD SETTINGS -> Search Paths -> Header Search Paths 添加如下如路径：
 ````
-$(SRCROOT)/../node_modules/codeinstall-react-native/ios/RCTOpenInstall
+$(SRCROOT)/../node_modules/codeinstall-react-native/ios/RCTCodeInstall
 ````
 
 ## 三、使用指南
