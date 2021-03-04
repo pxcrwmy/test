@@ -1,9 +1,8 @@
 ### iOS 手动集成方式
 
-- 在React Native < 0.60版本下， `react-native link` 之后，打开 iOS 工程  
-- 在React Native >= 0.60版本下，通过pod安装插件后，打开iOS工程  
+-  `react-native link` 之后，打开 iOS 工程
 
-也可不执行 `react-native link` 或cocoapod安装，通过手动拖拽codeinstall-react-native插件 `RCTCodeInstall.xcodeproj` 到xcode工程中，这部分可参考[官方文档](https://reactnative.cn/docs/linking-libraries-ios/)或[facebook英文文档](https://facebook.github.io/react-native/docs/linking-libraries-ios)
+也可不执行 `react-native link` ，通过手动拖拽codeinstall-react-native插件 `RCTCodeInstall.xcodeproj` 到xcode工程中，这部分可参考[官方文档](https://reactnative.cn/docs/linking-libraries-ios/)或[facebook英文文档](https://facebook.github.io/react-native/docs/linking-libraries-ios)
 
 #### 1 相关配置
 
@@ -23,9 +22,8 @@
 - 添加 codeinstall 官网后台中应用对应的关联域名（codeinstall应用控制台->iOS集成->iOS应用配置->关联域名(Associated Domains)）
 
 ##### （3）scheme配置
-- `scheme` 的值请在codeinstall控制台获取（codeinstall应用控制台->iOS集成->iOS应用配置）
+- `scheme` 的值也是从codeinstall官网后台获取应用的appkey
 在 `Info.plist` 文件中，在 `CFBundleURLTypes` 数组中添加应用对应的 `scheme`，或者在工程“TARGETS-Info-URL Types”里快速添加，图文配置请看[iOS集成指南](https://www.codeinstall.io/doc/ios_sdk.html)
-（scheme的值详细获取位置：codeinstall应用控制台->iOS集成->iOS应用配置）
 
 ``` xml
  <key>CFBundleURLTypes</key>
@@ -37,7 +35,7 @@
     <string>codeinstall</string>
     <key>CFBundleURLSchemes</key>
     <array>
-      <string>"从codeinstall官网后台获取应用的scheme"</string>
+      <string>"从codeinstall官网后台获取应用的appkey"</string>
     </array>
   </dict>
  </array>

@@ -49,7 +49,7 @@ project/android/app/AndroidManifest.xml
 ```
 
 在AndroidManifest.xml的拉起页面activity标签中添加intent-filter（一般为MainActivity），配置scheme，用于浏览器中拉起  
-(scheme详细获取位置：codeinstall应用控制台 -> Android集成 -> Android应用配置)
+(scheme也设置为AppKey)
 
 ``` xml
 <activity
@@ -63,7 +63,7 @@ project/android/app/AndroidManifest.xml
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="CODEINSTALL_SCHEME"/>
+        <data android:scheme="CODEINSTALL_APPKEY"/>
     </intent-filter>
 </activity>
 

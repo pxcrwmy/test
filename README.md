@@ -8,26 +8,8 @@ codeinstall-react-native 是codeinstall官方开发的 React Native 插件，使
 
 ```
 npm install codeinstall-react-native --save
-```
-
-**React Native 0.60 之前**  
-
-```
 react-native link
-```
-- link的时候如果出现 `Error: Cannot find module 'asap/raw'` 则先执行 `npm install` 再 `react-native link` 就好了
 
-**React Native 0.60 之后**  
-
-如果你的iOS项目是通过Cocoapods来集成React Native（即原生应用集成react-native），可通过如下步骤安装本插件。（注意：使用 pod 就无须执行 react-native link 了，否则会有冲突。）
-
-1. 在ios/Podfile文件中添加如下代码：
-```
- pod 'codeinstall-react-native', :path => '../node_modules/codeinstall-react-native'
-```
-2. 在Podfile文件所在目录下执行命令：
-```
- pod install
 ```
 
 ## 二、自动集成方式
@@ -35,15 +17,13 @@ react-native link
 
 （1）使用自动集成脚本集成代码和部分配置
 ```
-npm run codeinstall <yourAppKey> <yourScheme>
+npm run codeinstall <yourAppKey>
 ```
 - yourAppKey指的是你在codeinstall官方账号后台，创建应用后分配的AppKey
-- yourScheme指的是你在codeinstall官方账号后台，创建应用后分配的scheme  
-(scheme详细获取位置：codeinstall应用控制台->Android集成->Android应用配置，iOS同理）  
 
 举例：
 ```
-npm run codeinstall e7iomw rc8tey
+npm run codeinstall f6konh
 ```
 （2）xcode配置（只对iOS）  
 
@@ -98,29 +78,24 @@ import CodeinstallModule from 'codeinstall-react-native'
 ```
 调用如下方法，可重复获取（理论上可在任意位置获取安装参数）：
 ```
-CodeinstallModule.getInstall(10, map => {
+CodeinstallModule.getInstall(map => {
   if (map) {
     //do your work here
   }        
   Alert.alert('安装回调',JSON.stringify(map))     
 })
 ```
-- 第一个传入的参数为超时时长，一般为10s左右，如果只是在后台默默统计或使用，可以设置更长时间；第二个函数返回的是map或字典，包含动态安装参数（data）和渠道参数（channel），注意：只有通过渠道二维码或链接安装app后，才会有渠道参数
+- 第一个传入的函数返回的是map或字典，包含动态安装参数（data）和渠道参数（channel），注意：只有通过渠道二维码或链接安装app后，才会有渠道参数
 - 如果动态安装参数（data）和渠道参数（channel）同时为空，则map返回null
 - 对iOS，该方法尽量写在业务场景需要参数的位置调用（在业务场景时，网络一般都是畅通的），例如，可以选择在用户注册成功后调用该方法获取参数，对用户进行奖励。原因是iOS首次安装、首次启动的app，会询问用户获取网络权限，用户允许后SDK才能正常联网去获取参数。如果调用过早，可能导致网络权限还未允许就被调用，导致参数无法及时拿到，误以为参数不存在
 
 ### 4. 渠道统计（高级版功能）
 SDK 会自动完成访问量、点击量、安装量、活跃量、留存率等统计工作。
 
-#### （1）上报注册事件
+#### 上报注册事件
 在用户注册成功时，可调用该方法上报注册事件，需要导入'codeinstall-react-native'
 ```
 CodeinstallModule.reportRegister()
-```
-#### （2）上报效果点
-两个参数分别为 效果点的ID，string类型，以及 效果点的值，为整型，示例：
-```
-CodeinstallModule.reportEffectPoint('effect_test',1)
 ```
 
 ## 四、导出apk/api包并上传
